@@ -1,6 +1,6 @@
 # Soliloquy
 
-**A 100% free, offline-first Neo-Brutalist journal and mood tracker that runs completely on your device.**
+**A 100% free, offline-first journal and mood tracker that runs completely on your device.**
 
 🔗 **Live App:** [https://pages.dev](https://pages.dev) *(replace with your actual Cloudflare Pages link)*
 
