@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/work-sans/400.css";
+@import "@fontsource/work-sans/500.css";
+@import "@fontsource/work-sans/600.css";
+@import "@fontsource/work-sans/700.css";
+@import "@fontsource/work-sans/800.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/700.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-canvas: #FAF5E8;
+    --bg-card: #FFFFFF;
+    --border-ink: #111111;
+    --shadow-ink: #111111;
+    --text-primary: #111111;
+    --text-muted: #52525B;
+    --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
+    --font-note: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .dark {
+    --bg-canvas: #121215;
+    --bg-card: #1B1B20;
+    --border-ink: #E4E4E7;
+    --shadow-ink: #000000;
+    --text-primary: #FAFAFA;
+    --text-muted: #A1A1AA;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-note,
+  .font-note .font-display {
+    font-family: var(--font-note);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  /* Custom app-themed text selection replacing harsh browser blue */
+  ::selection {
+    background-color: #84C9A6;
+    color: #111111;
+  }
+
+  ::-moz-selection {
+    background-color: #84C9A6;
+    color: #111111;
+  }
+
+  .dark ::selection {
+    background-color: #DF9BB9;
+    color: #111111;
+  }
+
+  .dark ::-moz-selection {
+    background-color: #DF9BB9;
+    color: #111111;
+  }
+
+  /* When rounded selection overlay is active for DOM/editor text, hide rectangular browser highlight */
+  body.custom-selection-active ::selection {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  body.custom-selection-active ::-moz-selection {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  body.custom-selection-active input::selection,
+  body.custom-selection-active textarea::selection {
+    background-color: #84C9A6;
+    color: #111111;
+  }
+
+  .dark body.custom-selection-active input::selection,
+  .dark body.custom-selection-active textarea::selection {
+    background-color: #DF9BB9;
+    color: #111111;
+  }
+
+  /* Rounded highlights for inline rich-text marks */
+  mark,
+  [contenteditable] span[style*="background-color"] {
+    border-radius: 0.4rem;
+    padding: 0.05rem 0.28rem;
+    color: #111111;
+  }
+}
+
+@layer components {
+  .themed-canvas {
+    background-color: var(--tab-bg-light, var(--bg-canvas));
+    transition: background-color 240ms ease;
+  }
+
+  .dark .themed-canvas {
+    background-color: var(--tab-bg-dark, var(--bg-canvas));
+  }
+
+  .themed-halo {
+    --tw-ring-color: var(--tab-bg-light, var(--bg-canvas));
+  }
+
+  .dark .themed-halo {
+    --tw-ring-color: var(--tab-bg-dark, var(--bg-canvas));
+  }
+
+  .tactile-card {
+    background-color: var(--bg-card);
+    border: 2px solid var(--border-ink);
+    box-shadow: 4px 4px 0px var(--shadow-ink);
+    border-radius: 0.75rem;
+  }
+
+  .tactile-card-sm {
+    background-color: var(--bg-card);
+    border: 2px solid var(--border-ink);
+    box-shadow: 3px 3px 0px var(--shadow-ink);
+    border-radius: 0.75rem;
+  }
+
+  .tactile-btn {
+    border: 2px solid var(--border-ink);
+    box-shadow: 4px 4px 0px var(--shadow-ink);
+    border-radius: 0.75rem;
+    transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tactile-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--shadow-ink);
+  }
+}
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
