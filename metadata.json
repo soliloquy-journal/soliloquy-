@@ -1,0 +1,6 @@
+{
+  "name": "Journal — Private Block Notes & Mood Companion",
+  "description": "A local-first, 100% offline personal journal with rich block notes, folders, voice memos, and a mood check-in companion stored privately on your device.",
+  "requestFramePermissions": ["microphone", "camera"],
+  "majorCapabilities": []
+}
