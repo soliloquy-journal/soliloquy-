@@ -1,64 +1,78 @@
-# Soliloquy
+# Soliloquy — Private Offline Journal & Mood Companion
 
-**A 100% free, offline-first journal and mood tracker that runs completely on your device.**
-
-🔗 **Live App:** [https://pages.dev](https://pages.dev) *(replace with your actual Cloudflare Pages link)*
+> **Soliloquy** is a local-first, 100% offline-capable personal journal and mood tracker built with React, TypeScript, Tailwind CSS, Dexie.js (IndexedDB), and Vite. All your journal entries, notes, photos, voice memos, and mood check-ins remain 100% private and stored strictly on your device.
 
 ---
 
-## Why Soliloquy?
+## ✨ Core Features
 
-Most journaling apps lock basic features behind monthly subscriptions or store your personal thoughts on external company servers. **Soliloquy** is built around a simple rule: **your private thoughts belong only to you.**
-
-- **100% Local-First Privacy:** Zero accounts, zero login, zero cloud servers, and zero tracking. Everything is stored locally inside your browser using IndexedDB (`Dexie.js`).
-- **Completely Free Forever:** No paywalls, no ads, and no feature limits.
-- **Works Offline (PWA):** Install it directly onto your Android, iOS, or desktop home screen and journal anywhere without an internet connection.
-
----
-
-## Features
-
-- **2-Step Daily Mood Check-In:** Log how you feel with an interactive slider, context tags, and quick reflections.
-- **Notebook Spotlight & Folders:** Organize entries into custom folders, drag-and-drop to reorder notes, and filter by date or mood.
-- **Calendar & Mood Analytics:** Visualize your journaling consistency, daily mood trends, and breakdowns at a glance.
-- **25+ Dynamic Google Fonts:** Personalize the reading and writing typography anytime from Settings.
-- **Full Data Ownership:** 1-click **JSON Backup & Restore**, readable `.txt`/`.md` exports, and safe data reset controls.
-- **Client-Side Sharing:** Share individual reflection cards or invite friends via your device's native share menu without exposing your diary.
+- **100% Private & Local-First**: IndexedDB storage via Dexie.js ensures your thoughts never touch a remote server or cloud database.
+- **Neo-Brutalist Design**: Distinctive typography, thick 2px solid ink borders, hard offset shadows, and per-tab calm matte color themes.
+- **Rich Block Editor**: Support for checklists, callouts, tables, markdown-style quotes, code blocks, stickers, washi tape, photo captions, voice recordings, and `[[wiki-links]]` between notes.
+- **Mood Studio & Check-in Companion**: 6-step mood scale with custom Lucide icons, dynamic geometric badges, activity tags, day-by-day charts, and insights.
+- **Note-Scoped Typography**: Choose from 25 popular Google Fonts strictly scoped to your notes while app menus maintain crisp UI typography.
+- **Privacy-Safe Sharing**: Share app link or export individual entries either as formatted text or as beautiful Neo-Brutalist square PNG image cards rendered locally via HTML5 Canvas.
+- **JSON & Readable Exports**: Export full backups as JSON or readable Markdown (`.md`) and plain text (`.txt`) archives anytime.
+- **Progressive Web App (PWA)**: Install Soliloquy as a standalone app on your phone or desktop for full offline support.
 
 ---
 
-## Tech Stack
+## 🚀 Deploying to Cloudflare Pages via GitHub
 
-- **Frontend:** React, TypeScript, Vite
-- **Styling:** Tailwind CSS (Neo-Brutalist UI)
-- **Local Database:** IndexedDB via [Dexie.js](https://dexie.org)
-- **Icons:** [Lucide React](https://lucide.dev)
-- **Hosting:** Cloudflare Pages
+### Which Files to Keep (Commit to GitHub)
+When setting up your GitHub repository, keep and commit the source and configuration files:
+- 📁 **`src/`** — All React components, context state management, and utility functions.
+- 📁 **`public/`** — Static assets, PWA manifest, service workers, and hosting redirect rules (`_redirects`).
+- 📄 **`package.json`** & **`bun.lock`** (or `package-lock.json`) — Project dependencies and build configuration.
+- 📄 **`vite.config.ts`** — Vite and VitePWA build configuration.
+- 📄 **`tsconfig.json`** — TypeScript compiler options.
+- 📄 **`index.html`** — HTML entry point with SEO, Open Graph, and Schema.org structured data.
+- 📄 **`.env.example`** — Template for environment variables.
+- 📄 **`.gitignore`** — Git ignore rules.
+- 📄 **`README.md`** — Project documentation.
 
----
-
-## Run Locally
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com
-   cd soliloquy
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+### Which Files to Exclude (Do NOT Commit)
+The following files and folders should **never** be committed to GitHub (and are handled automatically by `.gitignore`):
+- ❌ **`node_modules/`** — Installed packages (Cloudflare installs dependencies automatically during build).
+- ❌ **`dist/`** — Production build output (generated fresh by Cloudflare Pages on every deploy).
+- ❌ **`.aistudio/`** — Internal AI Studio workspace artifacts and assistant memory.
+- ❌ **`.env`** — Local secret keys or environment variables.
 
 ---
 
-## Data Safety Notice
+## 🛠️ Cloudflare Pages Build Settings
 
-Because **Soliloquy** does not use cloud servers, all journal entries live strictly inside your browser's local storage. Clearing your browser's site data will erase your entries—please use the **Export Backup (.json)** feature in Settings regularly to keep a safe copy on your device or personal drive.
+When connecting your GitHub repository to Cloudflare Pages, use these build settings:
 
-## License
+| Setting | Value |
+| :--- | :--- |
+| **Framework preset** | `Vite` |
+| **Build command** | `npm run build` (or `bun run build`) |
+| **Build output directory** | `dist` |
+| **Root directory** | `/` (leave blank) |
 
-MIT License — free to use, inspect, and learn from.
+---
+
+## 💻 Local Development Setup
+
+If you want to run Soliloquy locally on your machine:
+
+```bash
+# 1. Clone your repository
+git clone https://github.com/your-username/soliloquy.git
+cd soliloquy
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the local development server
+npm run dev
+```
+
+Open `http://localhost:3000` in your browser.
+
+---
+
+## 🛡️ License
+
+This project is open source and intended for personal use under the MIT License.
